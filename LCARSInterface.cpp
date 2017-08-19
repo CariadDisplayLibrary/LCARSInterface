@@ -72,7 +72,7 @@ namespace LCARS {
         }
     }
 
-    void HBar::draw(DisplayCore *dev, int x, int y) {
+    void HBar::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         drawOuterQuadrant(dev, 10, y + 10, 10, 0x01, leftColor);
         drawOuterQuadrant(dev, 10, y + 9, 10, 0x08, leftColor);
@@ -98,7 +98,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void HBarBend::draw(DisplayCore *dev, int x, int y) {
+    void HBarBend::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         int sw = dev->getWidth();
         if ((bendType & BendUp) && (bendType & BendLeft)) {
             dev->startBuffer();
@@ -266,7 +266,7 @@ namespace LCARS {
         scratchpad[x + y * 276] = c;
     }
 
-    void MiniScope::draw(DisplayCore *dev, int x, int y) {
+    void MiniScope::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         for (int i = 0; i < 276*84; i++) {
             scratchpad[i] = 0;
@@ -298,7 +298,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void RectButton::draw(DisplayCore *dev, int x, int y) {
+    void RectButton::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         if (_active) {
             dev->fillRectangle(x, y, _w, _h, _col_hi);
@@ -319,7 +319,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void OvalButton::draw(DisplayCore *dev, int x, int y) {
+    void OvalButton::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         color_t col = _col_on;
         if (_active) {
@@ -342,7 +342,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void ExpandedOvalButton::draw(DisplayCore *dev, int x, int y) {
+    void ExpandedOvalButton::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         color_t col = _col_on;
         if (_active) {
@@ -404,7 +404,7 @@ namespace LCARS {
     }
 
     void MessageLog::setValue(const char *str) {
-        for (int i = 0; i < strlen(str); i++) {
+        for (uint32_t i = 0; i < strlen(str); i++) {
             setValue(str[i]);
         }
     }

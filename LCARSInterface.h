@@ -7,19 +7,19 @@
 
 namespace LCARS {
 
-    const color_t DarkOrange = rgb(0xff9900);
-    const color_t MidOrange = rgb(0xff9966);
-    const color_t LightOrange = rgb(0xffcc99);
+    static const color_t DarkOrange = rgb(0xff9900);
+    static const color_t MidOrange = rgb(0xff9966);
+    static const color_t LightOrange = rgb(0xffcc99);
 
-    const color_t DarkRed = rgb(0xcc6666);
-    const color_t MidRed = rgb(0xcc6699);
-    const color_t LightRed = rgb(0xcc99cc);
+    static const color_t DarkRed = rgb(0xcc6666);
+    static const color_t MidRed = rgb(0xcc6699);
+    static const color_t LightRed = rgb(0xcc99cc);
 
-    const color_t DarkBlue = rgb(0x9999cc);
-    const color_t LightBlue = rgb(0x9999ff);
+    static const color_t DarkBlue = rgb(0x9999cc);
+    static const color_t LightBlue = rgb(0x9999ff);
 
-    const color_t Yellow = rgb(0xfffa35);
-    const color_t White = rgb(0xffffff);
+    static const color_t Yellow = rgb(0xfffa35);
+    static const color_t White = rgb(0xffffff);
 
     class HBar : public Widget {
         private:
@@ -35,7 +35,7 @@ namespace LCARS {
                 Widget(ts, dev, 0, y),
                 leftColor(lc), midColor(mc), rightColor(rc), leftText(lt), midText(mt), rightText(rt) {}
                 
-            void setPixel(int x, int y, color_t c) {} // No drawing!
+            void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
 
             void draw(DisplayCore *dev, int x, int y);
 
@@ -69,7 +69,7 @@ namespace LCARS {
                 int bt, color_t lc, color_t mc, color_t rc, color_t ec, int mp, int ms, int bs, const char *t) : Widget(ts, dev, x, y),
                 bendType(bt), leftColor(lc), midColor(mc), rightColor(rc), endColor(ec), midPos(mp), midSize(ms), bendSize(bs), text(t), movedMid(false) { setValue(mp); }
                 
-            void setPixel(int x, int y, color_t c) {} // No drawing!
+            void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
             void setValue(int x);
 
             void draw(DisplayCore *dev, int x, int y);
@@ -90,7 +90,7 @@ namespace LCARS {
             Block(Touch &ts, DisplayCore &dev, int x, int y, int w, int h, color_t col, const char *txt) : Widget(ts, dev, x, y), 
                 _width(w), _height(h), _color(col), _text(txt) {}
                 
-            void setPixel(int x, int y, color_t c) {} // No drawing!
+            void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
 
             void draw(DisplayCore *dev, int x, int y);
 
@@ -115,7 +115,7 @@ namespace LCARS {
                 strncpy(_text, txt, 99);
             }
                 
-            void setPixel(int x, int y, color_t c) {} // No drawing!
+            void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
 
             void draw(DisplayCore *dev, int x, int y);
 
