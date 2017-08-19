@@ -1,0 +1,19 @@
+Source: libdisplaycore-toolkit-lcarsinterface
+Section: libraries
+Priority: extra
+Maintainer: Matt Jenkins <matt@majenko.co.uk>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: libdisplaycore-toolkit-lcarsinterface
+Section: libraries
+Architecture: all
+XBSC-Group: DisplayCore
+XBSC-Subgroup: Toolkits
+Depends: libdisplaycore-core
+Provides: LCARSInterface.h
+Description: LCARSInterface library
+ Create Star Trek-esque user interfaces
+
+
+

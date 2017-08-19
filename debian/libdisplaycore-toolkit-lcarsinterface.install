@@ -1,0 +1,3 @@
+LCARSInterface.cpp libraries/DisplayCore/LCARSInterface
+LCARSInterface.h libraries/DisplayCore/LCARSInterface
+examples/ libraries/DisplayCore/LCARSInterface
