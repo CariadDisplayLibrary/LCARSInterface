@@ -55,8 +55,8 @@ namespace LCARS {
             const char *text;
             uint32_t _lastRender;
 
-            boolean movedMid;
-            boolean redraw;
+            bool movedMid;
+            bool redraw;
 
         public:
             static const int BendDown = 0x01;
@@ -235,7 +235,7 @@ namespace LCARS {
             char _data[5][300];
             int _cpos;
             int _mix_percent;
-            boolean _full;
+            bool _full;
         public:
             MessageLog(Touch &ts, DisplayCore &dev, int x, int y) : Widget(ts, dev, x, y), _full(true) {}
 
@@ -256,7 +256,7 @@ namespace LCARS {
             color_t _lowCol;
             color_t _hiCol;
             color_t _overCol;
-            boolean _valueChanged;
+            bool _valueChanged;
             int _realValue;
             uint32_t _lastRender;
 
