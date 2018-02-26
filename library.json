@@ -1,21 +1,21 @@
 {
     "name": "LCARSInterface",
-    "keywords": "display, displaycore, tft, lcd, glcd, oled, graphics, widgets, toolkits, buttons",
-    "description": "LCARS-like interface widgets",
-    "homepage": "http://displaycore.org/wiki/index.php?title=LCARSInterface",
+    "keywords": "display, displaycore, tft, lcd, glcd, oled, graphics, font",
+    "description": "LCARSInterface for DisplayCore",
+    "homepage": "http://displaycore.org/wiki/index.php?title=Acorn",
     "repository":
     {
       "type": "git",
-      "url": "https://github.com/MajenkoLibraries/DisplayCore.git"
+      "url": "https://github.com/DisplayCore/LCARSInterface.git"
     },
-    "dependencies": [ { "name": "DisplayCore", "version": "1.18.8" } ],
+    "dependencies": [ { "name": "DisplayCore", "version": "2.1.0" } ],
     "export": {
-        "include": "Toolkits/LCARSInterface"
+        "exclude": "debian"
     },
     "authors": {
         "name": "Majenko Technologies", "url": "http://majenko.co.uk"
     },
-    "version": "1.18.8",
+    "version": "2.0.3",
     "frameworks": "arduino",
     "platforms": "microchippic32"
 }
