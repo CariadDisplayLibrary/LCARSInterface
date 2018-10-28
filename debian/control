@@ -12,7 +12,7 @@ XBSC-Group: DisplayCore
 XBSC-Subgroup: Toolkits
 Depends: libdisplaycore-core
 Provides: LCARSInterface.h
-Description: LCARSInterface library
+Description: LCARSInterface
  Create Star Trek-esque user interfaces
 
 
