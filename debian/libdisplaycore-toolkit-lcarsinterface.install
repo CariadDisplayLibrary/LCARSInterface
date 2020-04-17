@@ -1,3 +1,4 @@
-LCARSInterface.cpp libraries/DisplayCore/LCARSInterface
-LCARSInterface.h libraries/DisplayCore/LCARSInterface
-examples/ libraries/DisplayCore/LCARSInterface
+examples libraries/DisplayCore/LCARSInterface
+library.json libraries/DisplayCore/LCARSInterface
+library.properties libraries/DisplayCore/LCARSInterface
+src libraries/DisplayCore/LCARSInterface
