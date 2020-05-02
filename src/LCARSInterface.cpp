@@ -2,7 +2,7 @@
 
 namespace LCARS {
 
-    void drawOuterQuadrant(DisplayCore *dev, int x0, int y0, int r, int corner, color_t color) {
+    void drawOuterQuadrant(Cariad *dev, int x0, int y0, int r, int corner, color_t color) {
         int f = 1 - r;
         int ddF_x = 1;
         int ddF_y = -2 * r;
@@ -37,7 +37,7 @@ namespace LCARS {
         }
     }
 
-    void drawInnerQuadrant(DisplayCore *dev, int x0, int y0, int r, int corner, color_t color) {
+    void drawInnerQuadrant(Cariad *dev, int x0, int y0, int r, int corner, color_t color) {
         int f     = 1 - r;
         int ddF_x = 1;
         int ddF_y = -2 * r;
@@ -72,7 +72,7 @@ namespace LCARS {
         }
     }
 
-    void HBar::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
+    void HBar::draw(Cariad *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         drawOuterQuadrant(dev, 10, y + 10, 10, 0x01, leftColor);
         drawOuterQuadrant(dev, 10, y + 9, 10, 0x08, leftColor);
@@ -98,7 +98,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void HBarBend::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
+    void HBarBend::draw(Cariad *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         int sw = dev->getWidth();
         if ((bendType & BendUp) && (bendType & BendLeft)) {
             dev->startBuffer();
@@ -199,7 +199,7 @@ namespace LCARS {
         }
     }
 
-    void Block::draw(DisplayCore *dev, int x, int y) {
+    void Block::draw(Cariad *dev, int x, int y) {
         dev->startBuffer();
         dev->fillRectangle(x, y, _width, _height, _color);
         dev->setTextColor(Color::Black, _color);
@@ -209,7 +209,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void StaticText::draw(DisplayCore *dev, int x, int y) {
+    void StaticText::draw(Cariad *dev, int x, int y) {
         dev->startBuffer();
         dev->setTextColor(_color, Color::Black);
         dev->setFont(_font);
@@ -266,7 +266,7 @@ namespace LCARS {
         scratchpad[x + y * 276] = c;
     }
 
-    void MiniScope::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
+    void MiniScope::draw(Cariad *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         for (int i = 0; i < 276*84; i++) {
             scratchpad[i] = 0;
@@ -298,7 +298,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void RectButton::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
+    void RectButton::draw(Cariad *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         if (_active) {
             dev->fillRectangle(x, y, _w, _h, _col_hi);
@@ -319,7 +319,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void OvalButton::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
+    void OvalButton::draw(Cariad *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         color_t col = _col_on;
         if (_active) {
@@ -342,7 +342,7 @@ namespace LCARS {
         dev->endBuffer();
     }
 
-    void ExpandedOvalButton::draw(DisplayCore *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
+    void ExpandedOvalButton::draw(Cariad *dev, int __attribute__((unused)) x, int __attribute__((unused)) y) {
         dev->startBuffer();
         color_t col = _col_on;
         if (_active) {
@@ -420,7 +420,7 @@ namespace LCARS {
         }
     }
 
-    void MessageLog::draw(DisplayCore *dev, int x, int y) {
+    void MessageLog::draw(Cariad *dev, int x, int y) {
         dev->startBuffer();
         dev->setFont(Fonts::LCARS16);
         if (_full) {
@@ -498,7 +498,7 @@ namespace LCARS {
         }
     }
 
-    void VScale::draw(DisplayCore *dev, int x, int y) {
+    void VScale::draw(Cariad *dev, int x, int y) {
         dev->startBuffer();
         // If a full redraw then do everything
         if (!_valueChanged) {

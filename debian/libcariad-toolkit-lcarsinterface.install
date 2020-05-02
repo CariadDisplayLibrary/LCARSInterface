@@ -1,0 +1,4 @@
+examples libraries/Cariad/LCARSInterface
+library.json libraries/Cariad/LCARSInterface
+library.properties libraries/Cariad/LCARSInterface
+src libraries/Cariad/LCARSInterface

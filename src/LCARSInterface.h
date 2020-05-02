@@ -1,7 +1,7 @@
 #ifndef _LCARSINTERFACE_H
 #define _LCARSINTERFACE_H
 
-#include <DisplayCore.h>
+#include <Cariad.h>
 #include <LCARS.h>
 #include <Average.h>
 
@@ -31,13 +31,13 @@ namespace LCARS {
             const char *rightText;
 
         public:
-            HBar(Touch &ts, DisplayCore &dev, int y, color_t lc, color_t mc, color_t rc, const char *lt, const char *mt, const char *rt) : 
+            HBar(Touch &ts, Cariad &dev, int y, color_t lc, color_t mc, color_t rc, const char *lt, const char *mt, const char *rt) : 
                 Widget(ts, dev, 0, y),
                 leftColor(lc), midColor(mc), rightColor(rc), leftText(lt), midText(mt), rightText(rt) {}
                 
             void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
 
             void initializeDevice() { }
     };
@@ -65,14 +65,14 @@ namespace LCARS {
             static const int BendRight = 0x20;
 
             HBarBend(
-                Touch &ts, DisplayCore &dev, int x, int y,
+                Touch &ts, Cariad &dev, int x, int y,
                 int bt, color_t lc, color_t mc, color_t rc, color_t ec, int mp, int ms, int bs, const char *t) : Widget(ts, dev, x, y),
                 bendType(bt), leftColor(lc), midColor(mc), rightColor(rc), endColor(ec), midPos(mp), midSize(ms), bendSize(bs), text(t), movedMid(false) { setValue(mp); }
                 
             void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
             void setValue(int x);
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
 
             void initializeDevice() { }
 
@@ -87,12 +87,12 @@ namespace LCARS {
             const char *_text;
 
         public:
-            Block(Touch &ts, DisplayCore &dev, int x, int y, int w, int h, color_t col, const char *txt) : Widget(ts, dev, x, y), 
+            Block(Touch &ts, Cariad &dev, int x, int y, int w, int h, color_t col, const char *txt) : Widget(ts, dev, x, y), 
                 _width(w), _height(h), _color(col), _text(txt) {}
                 
             void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
 
             void initializeDevice() { }
 
@@ -109,7 +109,7 @@ namespace LCARS {
             static const int AlignLeft = 0;
             static const int AlignRight = 1;
             static const int AlignCenter = 2;
-            StaticText(Touch &ts, DisplayCore &dev, int x, int y, color_t col, const uint8_t *f, const char *txt) : Widget(ts, dev, x, y), 
+            StaticText(Touch &ts, Cariad &dev, int x, int y, color_t col, const uint8_t *f, const char *txt) : Widget(ts, dev, x, y), 
                 _color(col), _font(f), _align(AlignLeft) {
                 memset(_text, 0, 100);
                 strncpy(_text, txt, 99);
@@ -117,7 +117,7 @@ namespace LCARS {
                 
             void setPixel(int __attribute__((unused)) x, int __attribute__((unused)) y, color_t __attribute__((unused)) c) {} // No drawing!
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
 
             void initializeDevice() { }
 
@@ -131,7 +131,7 @@ namespace LCARS {
             static color_t scratchpad[276*84];
 
         public:
-            MiniScope(Touch &ts, DisplayCore &dev, int x, int y) : Widget(ts, dev, x, y) {
+            MiniScope(Touch &ts, Cariad &dev, int x, int y) : Widget(ts, dev, x, y) {
                 data = new Average<int>(256);
             }
 
@@ -139,7 +139,7 @@ namespace LCARS {
         int getValue();
         int getAverage();
         void setPixel(int x, int y, color_t c);
-        void draw(DisplayCore *dev, int x, int y);
+        void draw(Cariad *dev, int x, int y);
 
         void initializeDevice() { }
     };
@@ -154,7 +154,7 @@ namespace LCARS {
             const uint8_t *_font;
             const char *_text;
         public:
-            RectButton(Touch &ts, DisplayCore &dev, int x, int y, int w, int h, color_t off, color_t on, color_t hi,
+            RectButton(Touch &ts, Cariad &dev, int x, int y, int w, int h, color_t off, color_t on, color_t hi,
                         const uint8_t *f, const char *t) :
                 Widget(ts, dev, x, y),
                 _w(w), _h(h), _col_off(off), _col_on(on), _col_hi(hi),
@@ -167,7 +167,7 @@ namespace LCARS {
                 _touch = true;
             }
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
 
     };
 
@@ -180,7 +180,7 @@ namespace LCARS {
 
         public:
             OvalButton(
-                Touch &ts, DisplayCore &dev,
+                Touch &ts, Cariad &dev,
                 int x, int y,
                 color_t off, color_t on, color_t hi,
                 const char *text
@@ -193,7 +193,7 @@ namespace LCARS {
                     _touch = true;
             }
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
     };
 
     class ExpandedOvalButton : public Widget {
@@ -210,7 +210,7 @@ namespace LCARS {
 
         public:
             ExpandedOvalButton(
-                Touch &ts, DisplayCore &dev,
+                Touch &ts, Cariad &dev,
                 int x, int y, int w,
                 color_t off, color_t on, color_t hi, color_t st,
                 const char *text,
@@ -227,7 +227,7 @@ namespace LCARS {
                     _touch = true;
             }
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
     };
 
     class MessageLog : public Widget {
@@ -237,12 +237,12 @@ namespace LCARS {
             int _mix_percent;
             bool _full;
         public:
-            MessageLog(Touch &ts, DisplayCore &dev, int x, int y) : Widget(ts, dev, x, y), _full(true) {}
+            MessageLog(Touch &ts, Cariad &dev, int x, int y) : Widget(ts, dev, x, y), _full(true) {}
 
             void setValue(int v);
             void setValue(const char *str);
 
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
             void render();
 #if ARDUINO >= 100
             virtual size_t write(uint8_t v);
@@ -261,7 +261,7 @@ namespace LCARS {
             uint32_t _lastRender;
 
         public:
-            VScale(Touch &ts, DisplayCore &dev, int x, int y, color_t lowCol, color_t hiCol, color_t overCol) : Widget(ts, dev, x, y), _lowCol(lowCol), _hiCol(hiCol), _overCol(overCol) { 
+            VScale(Touch &ts, Cariad &dev, int x, int y, color_t lowCol, color_t hiCol, color_t overCol) : Widget(ts, dev, x, y), _lowCol(lowCol), _hiCol(hiCol), _overCol(overCol) { 
                 _valueChanged = false; 
                 _touch = true;
                 _sense_x = 0;
@@ -272,7 +272,7 @@ namespace LCARS {
             
 
             void setValue(int v);
-            void draw(DisplayCore *dev, int x, int y);
+            void draw(Cariad *dev, int x, int y);
             void render();
     };
 };
